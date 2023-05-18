@@ -1,7 +1,54 @@
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import app from "../../firebase.config";
+
 
 const Login = () => {
+
+    const { signIn } = useContext(AuthContext);
+    const googleProvider = new GoogleAuthProvider();
+    const auth = getAuth(app);
+    
+    
+
+
+    const handleLogin = event => {
+        event.preventDefault();
+        const form = event.target;
+        
+        const email = form.email.value;
+        const password = form.password.value;
+        
+        console.log(email, password);
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.log(error));
+
+    }
+
+
+
+    const handleGoogleSignIn = () => {
+
+        signInWithPopup(auth, googleProvider)
+          .then(result => {
+            const user = result.user;
+            console.log(user);
+           
+          })
+          .catch(error => {
+            const errorMessage = error.message; // extract error message
+          console.log(errorMessage);
+          
+          })
+      }
+
     return (
         <div className="container mb-5">
             <div className="row justify-content-center">
@@ -9,7 +56,7 @@ const Login = () => {
                     <div className="card">
                         <div className="card-body">
                             <h3 className="card-title text-center">Login</h3>
-                            <form >
+                            <form onSubmit={handleLogin}>
                                 <div className="mb-3">
                                     <label htmlFor="email" className="form-label">
                                         Email
@@ -18,6 +65,7 @@ const Login = () => {
                                         type="email"
                                         className="form-control"
                                         id="email"
+                                        placeholder="Enter your email"
 
 
                                         required
@@ -31,6 +79,7 @@ const Login = () => {
                                         type="password"
                                         className="form-control"
                                         id="password"
+                                        maxLength="6" placeholder="Enter your password"
 
 
                                         required
@@ -46,7 +95,7 @@ const Login = () => {
                             </p>
 
                             <small className='me-2'>Sign in with: </small>
-                <Link><FaGoogle className='iconSize'></FaGoogle></Link>
+                <Link><FaGoogle onClick={handleGoogleSignIn} className='iconSize'></FaGoogle></Link>
                 <Link className='ms-3'><FaGithub className='iconSize' ></FaGithub></Link>
                         </div>
 

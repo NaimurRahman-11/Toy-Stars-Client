@@ -1,8 +1,21 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
+import { FaUserCircle } from "react-icons/fa";
 
 
 const Navbar = () => {
+
+
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch(error => console.log(error));
+    }
+
     return (
         <div>
             <div>
@@ -32,7 +45,14 @@ const Navbar = () => {
                             </div>
 
 
-                            <Link to="/login"><button className="btn btn-outline-warning" type="submit">Login</button></Link>
+                            {user ? user.photoURL ?
+                                <img src={user.photoURL} alt="" className='photoURL rounded-circle me-3' style={{ width: "40px", height: "40px" }} data-bs-toggle="tooltip" data-bs-placement="bottom" title={user.displayName} />
+                                : <FaUserCircle className='me-3 rounded-circle' style={{ width: "40px", height: "40px" }} data-bs-toggle="tooltip" data-bs-placement="bottom" title={user.email}></FaUserCircle> : null}
+
+
+                            {user ?
+                                <Link to=""><button onClick={handleLogOut} className="btn btn-outline-warning" type="submit">Log Out</button></Link> :
+                                <Link to="/login"><button className="btn btn-outline-warning" type="submit">Login</button></Link>}
                         </div>
                     </div>
                 </nav>

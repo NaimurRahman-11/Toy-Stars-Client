@@ -1,7 +1,49 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
+
 
 
 const Register = () => {
+
+    
+    const navigate = useNavigate()
+
+    const { createUser } = useContext(AuthContext);
+
+
+    const handleRegister = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photoURL = form.photoURL.value;
+        console.log(name, email, password, photoURL);
+
+
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+
+
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Registration Successful!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                navigate('/')
+                
+                
+            })
+            .catch(error => console.log(error));
+    }
+
     return (
         <div className="container mb-5">
             <div className="row justify-content-center">
@@ -9,7 +51,7 @@ const Register = () => {
                     <div className="card">
                         <div className="card-body">
                             <h3 className="card-title text-center">Register Here!</h3>
-                            <form >
+                            <form onSubmit={handleRegister}>
 
                                 <div className="mb-3">
                                     <label htmlFor="name" className="form-label">
@@ -33,6 +75,7 @@ const Register = () => {
                                         type="email"
                                         className="form-control"
                                         id="email"
+                                        placeholder="Enter your email"
 
 
                                         required
@@ -46,6 +89,7 @@ const Register = () => {
                                         type="password"
                                         className="form-control"
                                         id="password"
+                                        maxLength="6" placeholder="(Maximum Length is 6 )"
 
 
                                         required
