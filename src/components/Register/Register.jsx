@@ -1,15 +1,30 @@
 import { Link } from "react-router-dom";
-import { FaGoogle, FaGithub } from 'react-icons/fa';
 
-const Login = () => {
+
+const Register = () => {
     return (
         <div className="container mb-5">
             <div className="row justify-content-center">
                 <div className="col-md-6 col-sm-8">
                     <div className="card">
                         <div className="card-body">
-                            <h3 className="card-title text-center">Login</h3>
+                            <h3 className="card-title text-center">Register Here!</h3>
                             <form >
+
+                                <div className="mb-3">
+                                    <label htmlFor="name" className="form-label">
+                                        Name
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="name"
+
+
+                                        required
+                                    />
+                                </div>
+
                                 <div className="mb-3">
                                     <label htmlFor="email" className="form-label">
                                         Email
@@ -36,28 +51,32 @@ const Login = () => {
                                         required
                                     />
                                 </div>
+
+                                <div className="mb-3">
+                                    <label htmlFor="photoURL" className="form-label">
+                                        Photo URL
+                                    </label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="photoURL"
+
+                                    />
+                                </div>
                                 <button type="submit" className="btn btn-warning w-100">
-                                    Login
+                                    Submit
                                 </button>
                             </form>
                             <p className="mt-3 text-center">
-                                New to Toy Stars?{" "}
-                                <Link to="/register">Sign up here</Link>.
+                               Already have an account?{" "}
+                                <Link to="/login">Login here</Link>.
                             </p>
-
-                            <small className='me-2'>Sign in with: </small>
-                <Link><FaGoogle className='iconSize'></FaGoogle></Link>
-                <Link className='ms-3'><FaGithub className='iconSize' ></FaGithub></Link>
                         </div>
-
                     </div>
                 </div>
-
             </div>
-
         </div>
     );
 };
 
-export default Login;
-
+export default Register;
