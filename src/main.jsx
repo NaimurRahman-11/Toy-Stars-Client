@@ -11,6 +11,7 @@ import Login from './components/Login/Login.jsx';
 import Blog from './components/Blog/Blog';
 import Register from './components/Register/Register';
 import AuthProvider from './components/Providers/AuthProvider';
+import HomePage from './components/HomePage/HomePage';
 
 
 const router = createBrowserRouter([
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
     path: "/",
     element: <Main></Main>,
     children: [
+    
+      {
+        path: "/",
+        element: <HomePage></HomePage>
+      },
       {
         path: "/login",
         element: <Login></Login>
