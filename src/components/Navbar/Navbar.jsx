@@ -21,21 +21,36 @@ const Navbar = () => {
             <div>
                 <nav className="navbar navbar-expand-lg">
                     <div className="container-fluid">
-                        <Link to="/" className="navbar-brand"><img src="https://i.ibb.co/bmn3yVK/logo.png" alt="" className='logo' /></Link>
+                        <Link to="/" className="navbar-brand"><img src="https://i.ibb.co/bmn3yVK/logo.png" alt="" className='logo' /><b>ToyStars</b></Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav p-2 mx-auto mb-2 mb-lg-0">
                                 <li className='nav-item me-3'>
-                                    <Link to='/' className="nav-link myColor">Home</Link>
+                                    <Link to='/' className="nav-link ">Home</Link>
                                 </li>
                                 <li className='nav-item me-3'>
-                                    <Link to='/blog' className="nav-link myColor">Blog</Link>
+                                    <Link to='/blog' className="nav-link ">Blog</Link>
                                 </li>
                                 <li className='nav-item me-3'>
-                                    <Link to='/blog' className="nav-link myColor">All Toys</Link>
+                                    <Link to='/blog' className="nav-link ">All Toys</Link>
                                 </li>
+
+                                {user && (
+              <>
+                <li className= "nav-item me-3">
+                  <Link to="/my-toys" className="nav-link">
+                    My Toys
+                  </Link>
+                </li>
+                <li className= "nav-item me-3">
+                  <Link to="/add-toy" className="nav-link">
+                    Add a Toy
+                  </Link>
+                </li>
+              </>
+            )}
 
                             </ul>
                             <div>

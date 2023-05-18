@@ -13,6 +13,7 @@ import Register from './components/Register/Register';
 import AuthProvider from './components/Providers/AuthProvider';
 import HomePage from './components/HomePage/HomePage';
 import ErrorPage from './components/ErrorPage/error-page';
+import AddToy from './components/AddToy/AddToy';
 
 
 const router = createBrowserRouter([
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
         errorElement: <ErrorPage></ErrorPage>,
+      },
+      {
+        path: "/add-toy",
+        element: <AddToy></AddToy>,
+        errorElement: <ErrorPage></ErrorPage>
       }
     ]
   },
