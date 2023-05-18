@@ -3,10 +3,17 @@
     width: 150px;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Inter&display=swap');
+
+#root{
+    font-family: 'Bubblegum Sans', cursive;
+/* font-family: 'Inter', sans-serif; */
+}
+
 
 .navbar-nav .nav-item {
     
-    transition: 0.5s ease-in-out;
+    transition: 0.2s ease-in;
     
   }
   
