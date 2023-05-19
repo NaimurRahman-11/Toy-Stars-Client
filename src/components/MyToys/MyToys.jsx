@@ -56,26 +56,7 @@ const MyToys = () => {
 
 
 
-        //     <div className="container">
-        //   <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center">
-        //     {toys.map((item) => (
-        //       <div className="col mb-4 d-flex justify-content-center" key={item._id}>
-        //         <div className="card">
-        //           <img
-        //             src={item.toyPhotoURL}
-        //             className="card-img-top img-fluid"
-        //             style={{ width: "200px", height: "230px" }}
-        //             alt=""
-        //           />
-        //           <div className="card-body text-center">
-        //             <h5 className="card-title">{item.sellerName}</h5>
-        //             <p className="card-text">{item.details}</p>
-        //           </div>
-        //         </div>
-        //       </div>
-        //     ))}
-        //   </div>
-        // </div>
+            
 
 
     );
