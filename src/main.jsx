@@ -16,6 +16,9 @@ import ErrorPage from './components/ErrorPage/error-page';
 import AddToy from './components/AddToy/AddToy';
 import MyToys from './components/MyToys/MyToys';
 import UpdateToy from './components/UpdateToy/UpdateToy';
+import AllToys from './components/AllToys/AllToys';
+import ViewDetails from './components/ViewDetails/ViewDetails';
+import PrivateRoute from './components/Routes/PrivateRoute';
 
 
 
@@ -55,14 +58,26 @@ const router = createBrowserRouter([
       {
         path: "/my-toys",
         element: <MyToys></MyToys>,
-        errorElement: <ErrorPage></ErrorPage>,
-        // loader: () => fetch(`http://localhost:5000/toys?email=${user.email}`)
+        errorElement: <ErrorPage></ErrorPage>
+        
       },
       {
         path: "/update-toy/:id",
         element: <UpdateToy></UpdateToy>,
         errorElement: <ErrorPage></ErrorPage>,
         loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
+      },
+      {
+        path: "/all-toys",
+        element: <AllToys></AllToys>,
+        errorElement: <ErrorPage></ErrorPage>,
+        loader: () => fetch('http://localhost:5000/toys')
+      },
+      {
+        path: "/view-details/:id",
+        element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
+        errorElement: <ErrorPage></ErrorPage>,
+        
       }
     ]
   },
