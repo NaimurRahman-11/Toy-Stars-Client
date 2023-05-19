@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {  } from 'react'
 import ReactDOM from 'react-dom/client'
 
 import './index.css'
@@ -10,11 +10,14 @@ import Main from './components/Layout/Main.jsx';
 import Login from './components/Login/Login.jsx';
 import Blog from './components/Blog/Blog';
 import Register from './components/Register/Register';
-import AuthProvider from './components/Providers/AuthProvider';
+import AuthProvider, { } from './components/Providers/AuthProvider';
 import HomePage from './components/HomePage/HomePage';
 import ErrorPage from './components/ErrorPage/error-page';
 import AddToy from './components/AddToy/AddToy';
 import MyToys from './components/MyToys/MyToys';
+import UpdateToy from './components/UpdateToy/UpdateToy';
+
+
 
 
 const router = createBrowserRouter([
@@ -53,7 +56,13 @@ const router = createBrowserRouter([
         path: "/my-toys",
         element: <MyToys></MyToys>,
         errorElement: <ErrorPage></ErrorPage>,
-        loader: () => fetch('http://localhost:5000/toys')
+        // loader: () => fetch(`http://localhost:5000/toys?email=${user.email}`)
+      },
+      {
+        path: "/update-toy/:id",
+        element: <UpdateToy></UpdateToy>,
+        errorElement: <ErrorPage></ErrorPage>,
+        loader: ({params}) => fetch(`http://localhost:5000/toys/${params.id}`)
       }
     ]
   },

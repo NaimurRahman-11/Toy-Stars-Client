@@ -53,7 +53,7 @@ const ToyCard = ({ toy, toys, setToys }) => {
             <td>{price}$</td>
             <td>{details}</td>
             <td>
-                <Link><button className="btn btn-warning me-2"> <FaEdit></FaEdit> </button></Link>
+                <Link to={`/update-toy/${_id}`}><button className="btn btn-warning me-2"> <FaEdit></FaEdit> </button></Link>
                 <Link><button onClick={() => handleDelete(_id)} className="btn btn-danger"> <FaTrash></FaTrash> </button></Link>
             </td>
         </tr>

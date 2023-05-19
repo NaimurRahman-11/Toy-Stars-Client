@@ -1,21 +1,24 @@
-import { useContext } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../Providers/AuthProvider";
 
 
-const AddToy = () => {
+const UpdateToy = () => {
 
 
-    const { user } = useContext(AuthContext);
 
-    const handleAddToy = event => {
+    const navigate = useNavigate();
+    const toy = new useLoaderData();
+    const { _id, toyPhotoURL, toyName, category, sellerName, price, details, sellerEmail, rating, quantity } = toy;
+
+
+    const handleUpdateToy = event => {
         event.preventDefault();
 
         const form = event.target;
         const toyName = form.toyName.value;
         const sellerName = form.sellerName.value;
         const toyPhotoURL = form.toyPhotoURL.value;
-        const sellerEmail = user.email;
+        const sellerEmail = form.sellerEmail.value;
         const category = form.category.value;
         const price = form.price.value;
         const rating = form.rating.value;
@@ -24,31 +27,34 @@ const AddToy = () => {
 
 
 
-        const newToy = {toyName, sellerName, sellerEmail, toyPhotoURL, category, price, rating, quantity, details}
-        console.log(newToy);
+        const updatedToy = { toyName, sellerName, sellerEmail, toyPhotoURL, category, price, rating, quantity, details }
+        console.log(updatedToy);
 
-        fetch('http://localhost:5000/toys', {
-            method: 'POST',
+        fetch(`http://localhost:5000/toys/${_id}`, {
+            method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(newToy)
+            body: JSON.stringify(updatedToy)
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 form.reset();
-                if (data.insertedId) {
+                if (data.modifiedCount > 0) {
                     Swal.fire({
                         position: 'center',
                         icon: 'success',
-                        title: 'Toy Added Successfully!',
+                        title: 'Toy Updated Successfully!',
                         showConfirmButton: false,
                         timer: 1500
-                    })
+                    }).then(() => {
+                        navigate("/my-toys"); // Navigate to "my-toys" page
+                    });
                 }
-        })
+            })
     }
+
 
 
     return (
@@ -57,8 +63,8 @@ const AddToy = () => {
                 <div className="col-md-6 col-sm-8">
                     <div className="card">
                         <div className="card-body">
-                            <h3 className="card-title text-center">Add Your Toy!</h3>
-                            <form onSubmit={handleAddToy}>
+                            <h3 className="card-title text-center">Update Your Toy!</h3>
+                            <form onSubmit={handleUpdateToy}>
                                 <div className="mb-3">
                                     <label htmlFor="toyName" className="form-label">
                                         Toy Name
@@ -68,6 +74,7 @@ const AddToy = () => {
                                         className="form-control"
                                         id="toyName"
                                         placeholder=""
+                                        defaultValue={toyName}
 
 
 
@@ -82,6 +89,7 @@ const AddToy = () => {
                                         className="form-control"
                                         id="toyPhotoURL"
                                         placeholder=""
+                                        defaultValue={toyPhotoURL}
 
 
 
@@ -97,6 +105,7 @@ const AddToy = () => {
                                         className="form-control"
                                         id="sellerName"
                                         placeholder=""
+                                        defaultValue={sellerName}
 
 
 
@@ -112,7 +121,7 @@ const AddToy = () => {
                                         className="form-control"
                                         id="sellerEmail"
                                         placeholder=""
-                                        defaultValue={user.email}
+                                        defaultValue={sellerEmail}
                                         required
 
 
@@ -129,6 +138,7 @@ const AddToy = () => {
                                         className="form-control"
                                         id="category"
                                         placeholder=""
+                                        defaultValue={category}
 
 
 
@@ -144,6 +154,7 @@ const AddToy = () => {
                                         className="form-control"
                                         id="price"
                                         placeholder=""
+                                        defaultValue={price}
 
 
 
@@ -159,6 +170,7 @@ const AddToy = () => {
                                         className="form-control"
                                         id="rating"
                                         placeholder=""
+                                        defaultValue={rating}
 
 
 
@@ -174,6 +186,7 @@ const AddToy = () => {
                                         className="form-control"
                                         id="quantity"
                                         placeholder=""
+                                        defaultValue={quantity}
 
 
 
@@ -189,13 +202,14 @@ const AddToy = () => {
                                         className="form-control"
                                         id="details"
                                         placeholder=""
+                                        defaultValue={details}
 
 
 
                                     />
                                 </div>
                                 <button type="submit" className="btn btn-warning w-100">
-                                    Add
+                                    Update
                                 </button>
                             </form>
 
@@ -212,4 +226,4 @@ const AddToy = () => {
     );
 };
 
-export default AddToy;
+export default UpdateToy;

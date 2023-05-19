@@ -1,16 +1,24 @@
 
-import { useLoaderData } from "react-router-dom";
+
 import ToyCard from "../ToyCard/ToyCard";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 
 const MyToys = () => {
 
 
-    const loadedToys = useLoaderData();
-    const [toys, setToys] = useState(loadedToys);
+    const { user } = useContext(AuthContext);
+    const [toys, setToys] = useState([]);
 
+    
+    const url = `http://localhost:5000/toys?email=${user.email}`;
 
+    useEffect(() => {
+        fetch(url)
+            .then(res => res.json())
+        .then(data => setToys(data))
+    } ,[])
 
     return (
 

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
@@ -11,6 +11,7 @@ const Login = () => {
     const { signIn } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const auth = getAuth(app);
+    const navigate = useNavigate();
     
     
 
@@ -29,6 +30,7 @@ const Login = () => {
                 console.log(user);
             })
             .catch(error => console.log(error));
+        navigate("/");
 
     }
 
