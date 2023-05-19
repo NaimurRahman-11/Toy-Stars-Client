@@ -1,16 +1,22 @@
-import { FaClock, FaTruckMoving, FaUserTie } from 'react-icons/fa';
+import { FaClock, FaRegStar, FaStar, FaTruckMoving, FaUserTie } from 'react-icons/fa';
 import ActionFigure1 from '../../assets/ActionFigure1.png';
 import ActionFigure2 from '../../assets/ActionFigure2.png';
 import ActionFigure3 from '../../assets/ActionFigure3.png';
+import "./HomePage.css";
 
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import Rating from 'react-rating';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { AuthContext } from '../Providers/AuthProvider';
 
 
 
 const HomePage = () => {
 
 
+  const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
   const [activeTab, setActiveTab] = useState('Marvel');
 
@@ -22,7 +28,8 @@ const HomePage = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setToys(data));
-  }, []); // Run once on component mount
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleTabClick = (category) => {
     setActiveTab(category);
@@ -32,6 +39,22 @@ const HomePage = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setToys(data));
+  };
+
+
+  const handleViewDetails = () => {
+    if (!user) {
+     
+      Swal.fire({
+        title: 'Please log in',
+        text: 'You need to be logged in to view the details.',
+        icon: 'warning',
+        showCancelButton: false,
+        confirmButtonText: 'OK',
+      });
+    } else {
+      // User is present, do nothing or perform desired actions
+    }
   };
 
 
@@ -133,6 +156,109 @@ const HomePage = () => {
       </div>
 
 
+      <div className="container mb-5 mt-5">
+        <h2 className='text-center mb-3 p-4'>*Browse Our Products By Category*</h2>
+        <Tabs className="responsive-tabs">
+          <TabList className="nav nav-pills nav-justified mb-3 bg-light rounded flex-column flex-md-row">
+            <Tab className={`nav-item ${activeTab === 'Marvel' ? 'active' : ''}`}
+              onClick={() => handleTabClick('Marvel')} style={{ cursor: 'pointer' }}>
+              <span className="nav-link text-dark fw-bold">| Marvel |</span>
+            </Tab>
+            <Tab className={`nav-item ${activeTab === 'Transformer' ? 'active' : ''}`}
+              onClick={() => handleTabClick('Transformer')} style={{ cursor: 'pointer' }}>
+              <span className="nav-link text-dark fw-bold">| Transformer |</span>
+            </Tab>
+            <Tab className={`nav-item ${activeTab === 'Avengers' ? 'active' : ''}`}
+              onClick={() => handleTabClick('Avengers')} style={{ cursor: 'pointer' }}>
+              <span className="nav-link text-dark fw-bold">| Avengers |</span>
+            </Tab>
+          </TabList>
+
+          <TabPanel className="responsive-tab-panel">
+            <div className="p-4 bg-light">
+              <h2 className="mb-4">Any Content 1</h2>
+              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                {toys.map((toy) => (
+                  <div key={toy._id} className="col mb-4">
+                    <div className="card shadow">
+                      <img src={toy.toyPhotoURL} className="card-img-top img-fluid" alt="Product Image" style={{ objectFit: "contain", height: "250px" }} />
+                      <div className="card-body">
+                        <h5 className="card-title">{toy.toyName}</h5>
+                        <p className="card-text">Price: ${toy.price}</p>
+                        <p className="card-text">Rating: <Rating
+                              placeholderRating={toy.rating}
+                              readonly
+                            emptySymbol={<FaRegStar></FaRegStar>}
+                            placeholderSymbol={<FaStar className='text-warning'></FaStar>}
+                              fullSymbol={<FaStar></FaStar>}>
+                              
+                            </Rating> ({ (toy.rating)})</p>
+                            <Link to={`/view-details/${toy._id}`}><button onClick={() => handleViewDetails(toy._id)} className="btn btn-warning">View Details</button></Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </TabPanel>
+          <TabPanel className="responsive-tab-panel">
+          <div className="p-4 bg-light">
+              <h2 className="mb-4">Any Content 1</h2>
+              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                {toys.map((toy) => (
+                  <div key={toy._id} className="col mb-4">
+                    <div className="card shadow">
+                      <img src={toy.toyPhotoURL} className="card-img-top img-fluid" alt="Product Image" style={{ objectFit: "contain", height: "250px" }} />
+                      <div className="card-body">
+                        <h5 className="card-title">{toy.toyName}</h5>
+                        <p className="card-text">Price: ${toy.price}</p>
+                        <p className="card-text">Rating: <Rating
+                              placeholderRating={toy.rating}
+                              readonly
+                            emptySymbol={<FaRegStar></FaRegStar>}
+                            placeholderSymbol={<FaStar className='text-warning'></FaStar>}
+                              fullSymbol={<FaStar></FaStar>}>
+                              
+                            </Rating> ({ (toy.rating)})</p>
+                            <Link to={`/view-details/${toy._id}`}><button className="btn btn-warning">View Details</button></Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </TabPanel>
+          <TabPanel className="responsive-tab-panel">
+          <div className="p-4 bg-light">
+              <h2 className="mb-4">Any Content 1</h2>
+              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+                {toys.map((toy) => (
+                  <div key={toy._id} className="col mb-4">
+                    <div className="card shadow">
+                      <img src={toy.toyPhotoURL} className="card-img-top img-fluid" alt="Product Image" style={{ objectFit: "contain", height: "250px" }} />
+                      <div className="card-body">
+                        <h5 className="card-title">{toy.toyName}</h5>
+                        <p className="card-text">Price: ${toy.price}</p>
+                        <p className="card-text">Rating: <Rating
+                              placeholderRating={toy.rating}
+                              readonly
+                            emptySymbol={<FaRegStar></FaRegStar>}
+                            placeholderSymbol={<FaStar className='text-warning'></FaStar>}
+                              fullSymbol={<FaStar></FaStar>}>
+                              
+                            </Rating> ({ (toy.rating)})</p>
+                            <Link to={`/view-details/${toy._id}`}><button className="btn btn-warning">View Details</button></Link>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </TabPanel>
+        </Tabs>
+      </div>
+
+
 
       <section className="subscribe-section py-5 mt-5">
         <div className="container text-center">
@@ -168,69 +294,7 @@ const HomePage = () => {
       </section>
 
 
-      <div className="container mb-5">
-        <Tabs>
-          <TabList className="nav nav-pills nav-justified mb-3">
-            <Tab className={`nav-item ${activeTab === 'Marvel' ? 'active' : ''}`}
-              onClick={() => handleTabClick('Marvel')}>
-              <span className="nav-link">Marvel</span>
-            </Tab>
-            <Tab className={`nav-item ${activeTab === 'Transformer' ? 'active' : ''}`}
-              onClick={() => handleTabClick('Transformer')}>
-              <span className="nav-link">Transformer</span>
-            </Tab>
-            <Tab className={`nav-item ${activeTab === 'Avengers' ? 'active' : ''}`}
-              onClick={() => handleTabClick('Avengers')}>
-              <span className="nav-link">Avengers</span>
-            </Tab>
-          </TabList>
 
-          <TabPanel>
-            <div className="p-4 bg-light">
-              <h2 className="mb-4">Any Content 1</h2>
-              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-                {toys.map((toy) => (
-                  <div key={toy._id} className="col mb-4">
-                    <div className="card">
-                      <img src={toy.toyPhotoURL} className="card-img-top img-fluid" alt="Product Image" style={{ objectFit: "contain", height: "250px" }} />
-                      <div className="card-body">
-                        <h5 className="card-title">{toy.productName}</h5>
-                        <p className="card-text">{toy.productDescription}</p>
-                        <p className="card-text">Price: ${toy.price}</p>
-                        <a href="#" className="btn btn-primary">Buy Now</a>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="p-4 bg-light">
-              <h2 className="mb-4">Any Content 2</h2>
-              {toys.map((toy) => (
-                <div key={toy._id}>
-                  <p>Seller Name: {toy.sellerName}</p>
-                  <p>Toy Name: {toy.toyName}</p>
-                  {/* Add more information about the toy */}
-                </div>
-              ))}
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="p-4 bg-light">
-              <h2 className="mb-4">Any Content 3</h2>
-              {toys.map((toy) => (
-                <div key={toy._id}>
-                  <p>Seller Name: {toy.sellerName}</p>
-                  <p>Toy Name: {toy.toyName}</p>
-                  {/* Add more information about the toy */}
-                </div>
-              ))}
-            </div>
-          </TabPanel>
-        </Tabs>
-      </div>
 
 
     </div>

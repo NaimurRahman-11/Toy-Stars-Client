@@ -35,7 +35,7 @@ const ViewDetails = () => {
                 <div className="container">
                     <div className="row align-items-center p-3 mb-5">
                         <div className="col-md-6">
-                            <img src={toy.toyPhotoURL} alt='' className="img-fluid" style={{ width: "350px", height: "500px" }} />
+                            <img src={toy.toyPhotoURL} alt='' className="img-fluid" style={{ objectFit: "contain", height: "430px" }} />
                         </div>
                         <div className="col-md-4 shadow rounded p-5">
                             <h2>Toy Name: {toy.toyName}</h2>
@@ -53,6 +53,7 @@ const ViewDetails = () => {
                             
                             <h3>Price: ${toy.price}</h3>
                             <Link to='/all-toys'><button className="btn btn-warning mt-3">Back to All Toys</button></Link>
+                            <Link to=''><button className="btn btn-warning mt-3 ms-2">Purchase</button></Link>
                         </div>
                     </div>
                 </div>

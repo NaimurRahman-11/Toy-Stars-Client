@@ -46,7 +46,7 @@ const ToyCard = ({ toy, toys, setToys }) => {
     return (
 
         <tr>
-            <td><img src={toyPhotoURL} alt="" className="img-fluid" style={{ width: "100px", height: "130px" }} /></td>
+            <td><img src={toyPhotoURL} alt="" className="img-fluid" style={{ objectFit: "contain", height: "130px" }} /></td>
             <td>{toyName}</td>
             <td>{category}</td>
             <td>{sellerName}</td>
