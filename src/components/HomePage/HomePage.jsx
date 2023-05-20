@@ -3,6 +3,9 @@ import ActionFigure1 from '../../assets/ActionFigure1.png';
 import ActionFigure2 from '../../assets/ActionFigure2.png';
 import ActionFigure3 from '../../assets/ActionFigure3.png';
 import ActionFigure4 from '../../assets/ActionFigure4.jpg';
+import Client2 from '../../assets/client2.jpg';
+import Client3 from '../../assets/client3.jpg';
+
 import "./HomePage.css";
 import Aos from 'aos';
 import 'aos/dist/aos.css';
@@ -77,6 +80,7 @@ const HomePage = () => {
     <div>
 
 
+     {/* This is Banner Section */}
       <section className="banner mb-5">
         <div className="container">
           <div className="row align-items-center justify-content-around">
@@ -105,6 +109,7 @@ const HomePage = () => {
 
 
 
+       {/* This is Why Chose Us? Section */}
       <section className="services-section bg-light rounded py-5">
         <div className="container" data-aos="zoom-in-down">
           <h2 className='text-center mb-5'>Why Choose Us?</h2>
@@ -115,7 +120,7 @@ const HomePage = () => {
                   <FaTruckMoving style={{ fontSize: '62px' }}></FaTruckMoving>
                   <h5 className="card-title mt-4 fw-bold">Fast Delivery</h5>
                   <p className="card-text">
-                    We offer fast and reliable delivery to your doorstep.
+                    We offer fast and reliable delivery to your doorstep with care and effort.
                   </p>
                 </div>
               </div>
@@ -147,33 +152,10 @@ const HomePage = () => {
       </section>
 
 
-      <div className="carousel-container p-3 mt-5">
-        <h2 className='text-center mb-3 mt-4'>*Our Gallery*</h2>
-        <div id="carouselExample" className="carousel slide">
-          <div className="carousel-inner rounded">
-            <div className="carousel-item active">
-              <img src={ActionFigure1} className="d-block w-100" alt="..." />
-            </div>
-            <div className="carousel-item">
-              <img src={ActionFigure2} className="d-block w-100" alt="..." />
-            </div>
-            <div className="carousel-item">
-              <img src={ActionFigure3} className="d-block w-100" alt="..." />
-            </div>
-          </div>
-          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button>
-        </div>
-      </div>
+      
 
-
-      <div className="container mb-5 mt-5">
+       {/* This is Browse Products Section */}
+       <div className="container mb-5 mt-5">
         <h2 className='text-center mb-3 p-4'>*Browse Our Products By Category*</h2>
         <Tabs className="responsive-tabs">
           <TabList className="nav nav-pills nav-justified mb-3 bg-light rounded flex-column flex-md-row">
@@ -193,7 +175,7 @@ const HomePage = () => {
 
           <TabPanel className="responsive-tab-panel">
             <div className="p-4 bg-light">
-              <h2 className="mb-4">Any Content 1</h2>
+              
               <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                 {toys.map((toy) => (
                   <div key={toy._id} className="col mb-4">
@@ -220,7 +202,7 @@ const HomePage = () => {
           </TabPanel>
           <TabPanel className="responsive-tab-panel">
           <div className="p-4 bg-light">
-              <h2 className="mb-4">Any Content 1</h2>
+              
               <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                 {toys.map((toy) => (
                   <div key={toy._id} className="col mb-4">
@@ -247,7 +229,7 @@ const HomePage = () => {
           </TabPanel>
           <TabPanel className="responsive-tab-panel">
           <div className="p-4 bg-light">
-              <h2 className="mb-4">Any Content 1</h2>
+             
               <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
                 {toys.map((toy) => (
                   <div key={toy._id} className="col mb-4">
@@ -277,6 +259,110 @@ const HomePage = () => {
 
 
 
+      {/* This is Limited Offer Section */}
+      <div className="container mb-5">
+  <div className="row p-4">
+    <div className="col-md-6 mb-4">
+      <div className="card shadow" data-aos="fade-right">
+        <img className="card-img-top" src="https://blog.aweber.com/wp-content/uploads/2022/08/sun-with-sunglasses-animated-aweber.gif" alt="Left Card" style={{ objectFit: "contain" }} />
+        <div className="card-body">
+          <h2 className="card-title">Summer Time Limited Offer!</h2>
+          <p className="card-text ">Get your toys with upto <h1 className='text-warning'>10%</h1> discount in the summer.</p>
+        </div>
+      </div>
+    </div>
+    <div className="col-md-6">
+      <div className="card shadow" data-aos="fade-left">
+        <img className="card-img-top" src="https://bestanimations.com/media/christmas/1596779523merry-christmas-cat-greetings-animated-gif.gif" alt="Right Card" style={{ objectFit: "contain", height: "407px" }} />
+        <div className="card-body">
+          <h2 className="card-title">Christmas Time Offer!</h2>
+          <p className="card-text ">We offer <h1 className='text-warning'>15%</h1> discount for the christmas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+
+
+
+
+
+
+      {/* This is Gallery Section */}
+      <div className="carousel-container p-3 mt-5 mb-5">
+        <h2 className='text-center mb-3 mt-4'>*Our Gallery*</h2>
+        <div id="carouselExample" className="carousel slide">
+          <div className="carousel-inner rounded">
+            <div className="carousel-item active">
+              <img src={ActionFigure1} className="d-block w-100" alt="..." />
+            </div>
+            <div className="carousel-item">
+              <img src={ActionFigure2} className="d-block w-100" alt="..." />
+            </div>
+            <div className="carousel-item">
+              <img src={ActionFigure3} className="d-block w-100" alt="..." />
+            </div>
+          </div>
+          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+
+
+      
+       {/* This is Client Testimonial Section */}
+       <section className="testimonials-section" data-aos="fade-up">
+  <div className="container">
+    <h2 className="section-title text-center mt-3 p-3 mb-5">*Client Testimonials*</h2>
+    <div className="row">
+      <div className="col-lg-4 col-md-6 mb-4 shadow rounded">
+        <div className="testimonial-item d-flex flex-column align-items-center">
+          <div className="testimonial-content text-center">
+            <img className="testimonial-image mb-3 mt-4" src={Client3} alt="Client 1" style={{ objectFit: "contain", height: "130px", borderRadius: "10%" }} />
+            <p className="testimonial-comment">
+            &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet felis eu diam efficitur ullamcorper.&quot;
+            </p>
+            <h4 className="testimonial-author">John Doe</h4>
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-4 col-md-6 mb-4 shadow rounded">
+        <div className="testimonial-item d-flex flex-column align-items-center">
+          <div className="testimonial-content text-center">
+            <img className="testimonial-image mb-3 mt-4" src={Client2} alt="Client 2" style={{ objectFit: "contain", height: "130px", borderRadius: "10%" }}  />
+            <p className="testimonial-comment">
+            &quot;Suspendisse potenti. Sed tincidunt ultricies lorem, eu auctor lorem aliquam ut.&quot;
+            </p>
+            <h4 className="testimonial-author">Jane Smith</h4>
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-4 col-md-6 mb-4 shadow rounded">
+        <div className="testimonial-item d-flex flex-column align-items-center">
+          <div className="testimonial-content text-center">
+          <img className="testimonial-image mb-3 mt-4" src={Client3} alt="Client 2" style={{ objectFit: "contain", height: "130px", borderRadius: "10%" }}  />
+            <p className="testimonial-comment">
+            &quot;Fusce vel ullamcorper velit, nec faucibus lectus. Nunc ac ex lobortis, posuere ex ac, venenatis erat.&quot;
+            </p>
+            <h4 className="testimonial-author">David Johnson</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      
+      {/* This is Subscribe Section */}
       <section className="subscribe-section py-5 mt-5">
         <div className="container text-center">
           <h2>Subscribe to Our Newsletter</h2>
@@ -297,7 +383,7 @@ const HomePage = () => {
                   aria-describedby="subscribe-btn"
                 />
                 <button
-                  className="btn btn-primary"
+                  className="btn btn-warning"
                   type="button"
                   id="subscribe-btn"
                 >

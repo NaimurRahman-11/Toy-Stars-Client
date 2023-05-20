@@ -1,3 +1,20 @@
 ItemHover:hover{
     cursor: pointer;
 }
+
+.discount-banner {
+    height: 400px; /* Adjust the height as needed */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.8; /* Adjust the opacity as needed */
+  }
+
+  .card {
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
