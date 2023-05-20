@@ -1,13 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Inter&display=swap');
+
 .logo{
     height: 150px;
     width: 150px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Inter&display=swap');
 
-#root{
+body{
     font-family: 'Bubblegum Sans', cursive;
-/* font-family: 'Inter', sans-serif; */
+
 }
 
 

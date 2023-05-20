@@ -9,7 +9,7 @@ const Navbar = () => {
 
 
     const { user, logOut } = useContext(AuthContext);
-
+    console.log("navbar", user)
     const handleLogOut = () => {
         logOut()
             .then()
@@ -38,19 +38,19 @@ const Navbar = () => {
                                 </li>
 
                                 {user && (
-              <>
-                <li className= "nav-item me-3">
-                  <Link to="/my-toys" className="nav-link">
-                    My Toys
-                  </Link>
-                </li>
-                <li className= "nav-item me-3">
-                  <Link to="/add-toy" className="nav-link">
-                    Add a Toy
-                  </Link>
-                </li>
-              </>
-            )}
+                                    <>
+                                        <li className="nav-item me-3">
+                                            <Link to="/my-toys" className="nav-link">
+                                                My Toys
+                                            </Link>
+                                        </li>
+                                        <li className="nav-item me-3">
+                                            <Link to="/add-toy" className="nav-link">
+                                                Add a Toy
+                                            </Link>
+                                        </li>
+                                    </>
+                                )}
 
                             </ul>
                             <div>

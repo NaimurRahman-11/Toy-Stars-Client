@@ -2,32 +2,31 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import app from "../../firebase.config";
+import { GoogleAuthProvider } from "firebase/auth";
 import useTitle from "../hooks/useTitle";
 
 
 const Login = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn, googleSignIn } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
-    const auth = getAuth(app);
+
     const navigate = useNavigate();
     const location = useLocation();
     useTitle('Login');
 
-  const from = location.state?.from?.pathname || '/';
-    
-    
+    const from = location.state?.from?.pathname || '/';
+
+
 
 
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
-        
+
         const email = form.email.value;
         const password = form.password.value;
-        
+
         console.log(email, password);
         signIn(email, password)
             .then(result => {
@@ -36,27 +35,25 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch(error => console.log(error));
-        
+
 
     }
 
 
-
     const handleGoogleSignIn = () => {
+        googleSignIn(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log('sign in', user);
+                navigate(from, { replace: true });
 
-        signInWithPopup(auth, googleProvider)
-          .then(result => {
-            const user = result.user;
-              console.log(user);
-              navigate(from, { replace: true });
-           
-          })
-          .catch(error => {
-            const errorMessage = error.message; // extract error message
-          console.log(errorMessage);
-          
-          })
-      }
+            })
+            .catch(error => {
+                const errorMessage = error.message; // extract error message
+                console.log(errorMessage);
+
+            })
+    }
 
     return (
         <div className="container mb-5">
@@ -104,8 +101,8 @@ const Login = () => {
                             </p>
 
                             <small className='me-2'>Sign in with: </small>
-                <Link><FaGoogle onClick={handleGoogleSignIn} className='iconSize'></FaGoogle></Link>
-                <Link className='ms-3'><FaGithub className='iconSize' ></FaGithub></Link>
+                            <Link><FaGoogle onClick={handleGoogleSignIn} className='iconSize'></FaGoogle></Link>
+                            <Link className='ms-3'><FaGithub className='iconSize' ></FaGithub></Link>
                         </div>
 
                     </div>

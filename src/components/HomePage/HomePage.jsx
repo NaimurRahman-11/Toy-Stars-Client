@@ -2,6 +2,7 @@ import { FaClock, FaRegStar, FaStar, FaTruckMoving, FaUserTie } from 'react-icon
 import ActionFigure1 from '../../assets/ActionFigure1.png';
 import ActionFigure2 from '../../assets/ActionFigure2.png';
 import ActionFigure3 from '../../assets/ActionFigure3.png';
+import ActionFigure4 from '../../assets/ActionFigure4.jpg';
 import "./HomePage.css";
 import Aos from 'aos';
 import 'aos/dist/aos.css';
@@ -90,7 +91,7 @@ const HomePage = () => {
             </div>
             <div className="col-lg-6">
               <img
-                src="https://i.pinimg.com/564x/1f/2b/77/1f2b7722087534ac24084773735ae14d.jpg"
+                src={ActionFigure4}
                 alt="Toy Banner"
                 className="banner-image img-fluid mb-5"
                 style={{ width: "400px", height: "550px" }}

@@ -47,7 +47,7 @@ const AllToys = () => {
         <div>
 
 
-            <div>
+            <div className="container">
                 <form onSubmit={handleSearchSubmit} className="mt-2 mb-5">
                     <div className="row justify-content-center">
                         <div className="col-sm-8 col-md-6 mb-2">

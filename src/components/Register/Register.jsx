@@ -25,9 +25,10 @@ const Register = () => {
 
 
         createUser(email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
+            .then(() => {
+                // console.log(result)
+                // const user = result.user;
+                // console.log(user);
                 form.reset();
 
 
@@ -39,8 +40,8 @@ const Register = () => {
                     timer: 1500
                 })
                 navigate('/')
-                
-                
+
+
             })
             .catch(error => console.log(error));
     }
@@ -113,7 +114,7 @@ const Register = () => {
                                 </button>
                             </form>
                             <p className="mt-3 text-center">
-                               Already have an account?{" "}
+                                Already have an account?{" "}
                                 <Link to="/login">Login here</Link>.
                             </p>
                         </div>
