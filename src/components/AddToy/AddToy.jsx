@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Providers/AuthProvider";
 import useTitle from "../hooks/useTitle";
+import { FaTools } from "react-icons/fa";
 
 
 const AddToy = () => {
@@ -54,12 +55,16 @@ const AddToy = () => {
 
 
     return (
-        <div className="container mb-5">
+        <div className="container mb-5 rounded" style={{ backgroundImage: "url('https://i.pinimg.com/originals/50/38/c3/5038c3064eeedf57c54667b90aa5b5ac.gif')"}}>
             <div className="row justify-content-center">
+
+           
+
                 <div className="col-md-6 col-sm-8">
                     <div className="card">
                         <div className="card-body">
-                            <h3 className="card-title text-center">Add Your Toy!</h3>
+                            <h3 className="card-title text-center"> <FaTools></FaTools> Add Your Toy! <FaTools></FaTools></h3>
+                            
                             <form onSubmit={handleAddToy}>
                                 <div className="mb-3">
                                     <label htmlFor="toyName" className="form-label">
@@ -130,7 +135,7 @@ const AddToy = () => {
                                         type="text"
                                         className="form-control"
                                         id="category"
-                                        placeholder=""
+                                        placeholder="(Marvel, Avengers, Transformer)"
 
 
 
@@ -145,7 +150,7 @@ const AddToy = () => {
                                         type="number"
                                         className="form-control"
                                         id="price"
-                                        placeholder=""
+                                        placeholder="In Dollar $"
 
 
 
@@ -160,7 +165,8 @@ const AddToy = () => {
                                         type="number"
                                         className="form-control"
                                         id="rating"
-                                        placeholder=""
+                                        placeholder="On a scale of 5"
+                                        max="5"
 
 
 
@@ -190,7 +196,7 @@ const AddToy = () => {
                                         type="text"
                                         className="form-control"
                                         id="details"
-                                        placeholder=""
+                                        placeholder="Write a short description"
 
 
 
@@ -207,6 +213,8 @@ const AddToy = () => {
 
                     </div>
                 </div>
+
+                
 
             </div>
 
