@@ -3,6 +3,7 @@
 import ToyCard from "../ToyCard/ToyCard";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import useTitle from "../hooks/useTitle";
 
 
 const MyToys = () => {
@@ -10,6 +11,7 @@ const MyToys = () => {
 
     const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
+    useTitle('My Toys');
 
     
     const url = `https://toy-stars-server.vercel.app/toys?email=${user.email}`;

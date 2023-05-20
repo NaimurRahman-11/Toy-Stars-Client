@@ -3,6 +3,13 @@ import ActionFigure1 from '../../assets/ActionFigure1.png';
 import ActionFigure2 from '../../assets/ActionFigure2.png';
 import ActionFigure3 from '../../assets/ActionFigure3.png';
 import "./HomePage.css";
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+
+
+
+
+
 
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import { useContext, useEffect, useState } from 'react';
@@ -10,6 +17,7 @@ import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Providers/AuthProvider';
+import useTitle from '../hooks/useTitle';
 
 
 
@@ -19,7 +27,13 @@ const HomePage = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
   const [activeTab, setActiveTab] = useState('Marvel');
+  useTitle('Home'); 
 
+
+
+  useEffect(() => {
+    Aos.init();
+  }, [])
 
 
   useEffect(() => {
@@ -88,8 +102,10 @@ const HomePage = () => {
 
 
 
+
+
       <section className="services-section bg-light rounded py-5">
-        <div className="container">
+        <div className="container" data-aos="zoom-in-down">
           <h2 className='text-center mb-5'>Why Choose Us?</h2>
           <div className="row ">
             <div className="col-md-4 col-sm-6 mb-3">

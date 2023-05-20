@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import Rating from "react-rating";
 import { Link, useParams } from "react-router-dom";
+import useTitle from "../hooks/useTitle";
 
 
 
 const ViewDetails = () => {
 
+
+    useTitle('View Details');
     const { id } = useParams();
 
     const [toy, setToy] = useState(null);

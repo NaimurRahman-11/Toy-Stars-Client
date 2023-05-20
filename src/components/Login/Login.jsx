@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../firebase.config";
+import useTitle from "../hooks/useTitle";
 
 
 const Login = () => {
@@ -13,6 +14,7 @@ const Login = () => {
     const auth = getAuth(app);
     const navigate = useNavigate();
     const location = useLocation();
+    useTitle('Login');
 
   const from = location.state?.from?.pathname || '/';
     
