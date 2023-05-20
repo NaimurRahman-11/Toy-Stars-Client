@@ -262,8 +262,8 @@ const HomePage = () => {
       {/* This is Limited Offer Section */}
       <div className="container mb-5">
   <div className="row p-4">
-    <div className="col-md-6 mb-4">
-      <div className="card shadow" data-aos="fade-right">
+    <div className="col-md-6 mb-4" data-aos="fade-right">
+      <div className="card shadow" >
         <img className="card-img-top" src="https://blog.aweber.com/wp-content/uploads/2022/08/sun-with-sunglasses-animated-aweber.gif" alt="Left Card" style={{ objectFit: "contain" }} />
         <div className="card-body">
           <h2 className="card-title">Summer Time Limited Offer!</h2>
@@ -271,8 +271,8 @@ const HomePage = () => {
         </div>
       </div>
     </div>
-    <div className="col-md-6">
-      <div className="card shadow" data-aos="fade-left">
+    <div className="col-md-6" data-aos="fade-left">
+      <div className="card shadow" >
         <img className="card-img-top" src="https://bestanimations.com/media/christmas/1596779523merry-christmas-cat-greetings-animated-gif.gif" alt="Right Card" style={{ objectFit: "contain", height: "407px" }} />
         <div className="card-body">
           <h2 className="card-title">Christmas Time Offer!</h2>
@@ -319,8 +319,8 @@ const HomePage = () => {
 
       
        {/* This is Client Testimonial Section */}
-       <section className="testimonials-section" data-aos="fade-up">
-  <div className="container">
+       <section className="testimonials-section">
+  <div className="container"  data-aos="zoom-in-up">
     <h2 className="section-title text-center mt-3 p-3 mb-5">*Client Testimonials*</h2>
     <div className="row">
       <div className="col-lg-4 col-md-6 mb-4 shadow rounded">
