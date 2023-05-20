@@ -11,23 +11,36 @@ const MyToys = () => {
 
     const { user } = useContext(AuthContext);
     const [toys, setToys] = useState([]);
+    const [sortOrder, setSortOrder] = useState("asc");
     useTitle('My Toys');
 
     
-    const url = `https://toy-stars-server.vercel.app/toys?email=${user.email}`;
+    const url = `https://toy-stars-server.vercel.app/toys?email=${user.email}&sort=${sortOrder}`;
 
     useEffect(() => {
         fetch(url)
-            .then(res => res.json())
-            .then(data => setToys(data))
-         // eslint-disable-next-line react-hooks/exhaustive-deps
-    } ,[])
+          .then(res => res.json())
+          .then(data => setToys(data))
+          .catch(error => {
+            console.error("Error fetching toys:", error);
+          });
+    }, [url]);
+    
+
+    const handleSortOrderChange = () => {
+        const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
+        setSortOrder(newSortOrder);
+      };
 
     return (
 
 
 
         <div className="container">
+
+<button onClick={handleSortOrderChange} className="btn btn-warning mb-3">
+          {sortOrder === "asc" ? "Sort Descending" : "Sort Ascending"}
+        </button>
             <div className="table-responsive">
                 <table className="table">
                     <thead>
@@ -53,6 +66,10 @@ const MyToys = () => {
                     </tbody>
                 </table>
             </div>
+
+            <div>
+        
+      </div>
         </div>
 
 
