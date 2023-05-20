@@ -27,7 +27,7 @@ const AddToy = () => {
         const newToy = {toyName, sellerName, sellerEmail, toyPhotoURL, category, price, rating, quantity, details}
         console.log(newToy);
 
-        fetch('http://localhost:5000/toys', {
+        fetch('https://toy-stars-server.vercel.app/toys', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

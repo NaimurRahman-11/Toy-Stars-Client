@@ -30,7 +30,7 @@ const UpdateToy = () => {
         const updatedToy = { toyName, sellerName, sellerEmail, toyPhotoURL, category, price, rating, quantity, details }
         console.log(updatedToy);
 
-        fetch(`http://localhost:5000/toys/${_id}`, {
+        fetch(`https://toy-stars-server.vercel.app/toys/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

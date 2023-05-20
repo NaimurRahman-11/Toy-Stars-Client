@@ -22,7 +22,7 @@ const ToyCard = ({ toy, toys, setToys }) => {
             if (result.isConfirmed) {
 
 
-                fetch(`http://localhost:5000/toys/${_id}`, {
+                fetch(`https://toy-stars-server.vercel.app/toys/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

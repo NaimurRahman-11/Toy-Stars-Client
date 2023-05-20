@@ -12,7 +12,7 @@ const MyToys = () => {
     const [toys, setToys] = useState([]);
 
     
-    const url = `http://localhost:5000/toys?email=${user.email}`;
+    const url = `https://toy-stars-server.vercel.app/toys?email=${user.email}`;
 
     useEffect(() => {
         fetch(url)

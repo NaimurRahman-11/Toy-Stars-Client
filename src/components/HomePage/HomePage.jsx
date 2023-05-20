@@ -24,7 +24,7 @@ const HomePage = () => {
 
   useEffect(() => {
     // Fetch initial data for the default category (Marvel)
-    const url = `http://localhost:5000/toys?category=${activeTab}`;
+    const url = `https://toy-stars-server.vercel.app/toys?category=${activeTab}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setToys(data));
@@ -35,7 +35,7 @@ const HomePage = () => {
     setActiveTab(category);
 
     // Update the URL and fetch data based on the selected category
-    const url = `http://localhost:5000/toys?category=${category}`;
+    const url = `https://toy-stars-server.vercel.app/toys?category=${category}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setToys(data));

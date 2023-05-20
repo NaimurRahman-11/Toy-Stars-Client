@@ -16,7 +16,7 @@ const ViewDetails = () => {
         const fetchToyDetails = async () => {
             try {
 
-                const response = await fetch(`http://localhost:5000/toys/${id}`);
+                const response = await fetch(`https://toy-stars-server.vercel.app/toys/${id}`);
                 const data = await response.json();
                 setToy(data);
             } catch (error) {
