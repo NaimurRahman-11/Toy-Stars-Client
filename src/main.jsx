@@ -52,12 +52,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-toy",
-        element: <AddToy></AddToy>,
+        element: <PrivateRoute><AddToy></AddToy></PrivateRoute>,
         errorElement: <ErrorPage></ErrorPage>
       },
       {
         path: "/my-toys",
-        element: <MyToys></MyToys>,
+        element: <PrivateRoute><MyToys></MyToys></PrivateRoute>,
         errorElement: <ErrorPage></ErrorPage>
         
       },

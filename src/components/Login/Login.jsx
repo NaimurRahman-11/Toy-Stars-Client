@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from 'react-icons/fa';
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import { GoogleAuthProvider } from "firebase/auth";
 import useTitle from "../hooks/useTitle";
@@ -10,6 +10,8 @@ const Login = () => {
 
     const { signIn, googleSignIn } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
+    const [errorMessage, setErrorMessage] = useState(null);
+
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -34,7 +36,10 @@ const Login = () => {
                 console.log(user);
                 navigate(from, { replace: true });
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+                setErrorMessage(error.message);
+                console.log(error);
+            });
 
 
     }
@@ -49,8 +54,8 @@ const Login = () => {
 
             })
             .catch(error => {
-                const errorMessage = error.message; // extract error message
-                console.log(errorMessage);
+                setErrorMessage(error.message);
+                console.log(error);
 
             })
     }
@@ -62,6 +67,11 @@ const Login = () => {
                     <div className="card">
                         <div className="card-body">
                             <h3 className="card-title text-center">Login</h3>
+                            {errorMessage && (
+                                <div className="alert alert-danger" role="alert">
+                                    {errorMessage}
+                                </div>
+                            )}
                             <form onSubmit={handleLogin}>
                                 <div className="mb-3">
                                     <label htmlFor="email" className="form-label">

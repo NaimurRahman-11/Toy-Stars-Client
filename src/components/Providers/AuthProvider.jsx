@@ -42,23 +42,6 @@ const AuthProvider = ({ children }) => {
 
     }
 
-    // const createUser = (email, password) => {
-    //     setLoading(true);
-    //     setIsCreatingUser(true);
-    //     return new Promise((resolve, reject) => {
-    //       createUserWithEmailAndPassword(auth, email, password)
-    //         .then((result) => {
-    //           setLoading(false);
-    //           setIsCreatingUser(false);
-    //           resolve(result);
-    //         })
-    //         .catch((error) => {
-    //           setLoading(false);
-    //           setIsCreatingUser(false);
-    //           reject(error);
-    //         });
-    //     });
-    //   };
 
 
     const signIn = (email, password) => {
