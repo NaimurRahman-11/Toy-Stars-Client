@@ -91,7 +91,7 @@ const HomePage = () => {
                 everything from educational toys to fun-filled games that will
                 spark their imagination.
               </p>
-              <button className="btn btn-warning mb-5">Shop Now</button>
+              <Link to='/register'><button className="btn btn-warning mb-5">Register Now!</button></Link>
             </div>
             <div className="col-lg-6">
               <img
