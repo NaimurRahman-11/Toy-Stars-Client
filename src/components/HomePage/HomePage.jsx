@@ -35,9 +35,11 @@ const HomePage = () => {
 
 
 
-  useEffect(() => {
-    Aos.init();
-  }, [])
+  // useEffect(() => {
+  //   Aos.init();
+  // }, [])
+
+  Aos.init();
 
 
   useEffect(() => {
@@ -76,8 +78,27 @@ const HomePage = () => {
   };
 
 
+
+  const handleSubscribe = () => {
+
+    const emailInput = document.querySelector('input[type="email"]');
+  const emailValue = emailInput.value;
+    if (emailValue) {
+      Swal.fire({
+        title: 'Subscription Successful',
+        text: `You have successfully subscribed with email: ${emailValue}`,
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+
+      emailInput.value = '';
+
+    }
+  }
+
+
   return (
-    <div>
+    <div className='container'>
 
 
      {/* This is Banner Section */}
@@ -328,7 +349,7 @@ const HomePage = () => {
           <div className="testimonial-content text-center">
             <img className="testimonial-image mb-3 mt-4" src={Client3} alt="Client 1" style={{ objectFit: "contain", height: "130px", borderRadius: "10%" }} />
             <p className="testimonial-comment">
-            &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquet felis eu diam efficitur ullamcorper.&quot;
+            &quot;Toy Stars are very careful with their product delivery. I would highly recommend them.&quot;
             </p>
             <h4 className="testimonial-author">John Doe</h4>
           </div>
@@ -339,7 +360,7 @@ const HomePage = () => {
           <div className="testimonial-content text-center">
             <img className="testimonial-image mb-3 mt-4" src={Client2} alt="Client 2" style={{ objectFit: "contain", height: "130px", borderRadius: "10%" }}  />
             <p className="testimonial-comment">
-            &quot;Suspendisse potenti. Sed tincidunt ultricies lorem, eu auctor lorem aliquam ut.&quot;
+            &quot;Product quality is quite good. I liked their services. Well done, keep up the good work!&quot;
             </p>
             <h4 className="testimonial-author">Jane Smith</h4>
           </div>
@@ -350,7 +371,7 @@ const HomePage = () => {
           <div className="testimonial-content text-center">
           <img className="testimonial-image mb-3 mt-4" src={Client3} alt="Client 2" style={{ objectFit: "contain", height: "130px", borderRadius: "10%" }}  />
             <p className="testimonial-comment">
-            &quot;Fusce vel ullamcorper velit, nec faucibus lectus. Nunc ac ex lobortis, posuere ex ac, venenatis erat.&quot;
+            &quot;My son is a fan of ToyStars. Surely I will buy some more products from them.&quot;
             </p>
             <h4 className="testimonial-author">David Johnson</h4>
           </div>
@@ -363,7 +384,7 @@ const HomePage = () => {
 
       
       {/* This is Subscribe Section */}
-      <section className="subscribe-section py-5 mt-5">
+      <section className="subscribe-section py-5 mt-5 ">
         <div className="container text-center">
           <h2>Subscribe to Our Newsletter</h2>
           <p>Stay updated with the latest toys and offers!</p>
@@ -372,7 +393,8 @@ const HomePage = () => {
             alt="Subscribe Image"
             className="img-fluid mt-4 rounded mb-5"
           />
-          <div className="row justify-content-center">
+          <div className="row justify-content-center" data-aos="fade-up"
+     data-aos-anchor-placement="bottom-bottom">
             <div className="col-md-6">
               <div className="input-group mb-3">
                 <input
@@ -381,11 +403,13 @@ const HomePage = () => {
                   placeholder="Enter your email"
                   aria-label="Enter your email"
                   aria-describedby="subscribe-btn"
+                  required
                 />
                 <button
                   className="btn btn-warning"
                   type="button"
                   id="subscribe-btn"
+                  onClick={handleSubscribe}
                 >
                   Subscribe
                 </button>

@@ -44,7 +44,7 @@ const AllToys = () => {
 
 
     return (
-        <div>
+        <div className="container">
 
 
             <div className="container">
