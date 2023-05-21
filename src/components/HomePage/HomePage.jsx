@@ -34,12 +34,9 @@ const HomePage = () => {
   useTitle('Home'); 
 
 
-
-  // useEffect(() => {
-  //   Aos.init();
-  // }, [])
-
-  Aos.init();
+ 
+    Aos.init();
+  
 
 
   useEffect(() => {
